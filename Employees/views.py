@@ -3,13 +3,14 @@ from .models import Employee
 from datetime import datetime
 from django.db.models import Q
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required 
 
 # Create your views here.
 
 def index(request):
     return render(request,'index.html')
 
-
+@login_required(login_url='/admin')
 def view_all(request):
     emps = Employee.objects.all()
     context = {
@@ -18,7 +19,7 @@ def view_all(request):
     return render(request,'view_all.html',context)  
 
 
-
+@login_required(login_url='/admin')
 def add_emp(request):
 
     if request.method == 'POST':
@@ -42,7 +43,7 @@ def add_emp(request):
         return HttpResponse('An Error! Occurred Please Try Again')
 
 
-
+@login_required(login_url='/admin')
 def filter_emp(request):
 
     if request.method == 'POST':
@@ -71,7 +72,7 @@ def filter_emp(request):
     
 
 
-
+@login_required(login_url='/admin')
 def remove_emp(request,emp_id =0):
     if emp_id:
         try:
