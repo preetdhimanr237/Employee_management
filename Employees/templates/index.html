@@ -5,16 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Employees Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        /* Sidebar styling */
+        .sidebar {
+            min-height: 100vh;
+            background-color: #1e222b;
+        }
+        body {
+            background-color: #121212;
+            color: white;
+        }
+        .sidebar a {
+            color: #cfd4da;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        } 
+        .sidebar a:hover {
+            background-color: #1E90FF;
+            color: #fff;
+        }
+        /* Custom Dark Card Styling */
+        .custom-card {
+            background-color: #1e222b;
+            color: white;
+            border: 1px solid #2a2f3d;
+        }
+    </style>
   </head>
   <body>
-    <div class = "container">
-    <h1>Employees Details</h1>
-    <hr>
-    <a class="btn btn-primary" href="/view_all" role="button">View Emp</a>
-    <a class="btn btn-primary" href="/add_emp" role="button">Add emp</a>
-    <a class="btn btn-primary" href="/filter_emp" role="button">Filter emp</a>
-    <a class="btn btn-primary" href="/remove_emp" role="button">Remove emp</a>
-    </div> 
+    <div class="container-fluid">
+        <div class="row">
+            
+            <!-- Sidebar Section (Left Side) -->
+            <div class="col-md-3 col-lg-2 sidebar p-3">
+                <h4 class="text-white mb-4">🤵🏻EMS Panel</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="/admin">📊 Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/index">🏠 Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/add_emp">➕ Add Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/view_all">📋 View Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/filter_emp">🔍 Filter Employee</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Content Section (Right Side) -->
+            <div class="col-md-9 col-lg-10 p-4">
+                {% comment %} <h1 class="text-center mb-4"></h1> {% endcomment %}
+                
+                <!-- Welcome Banner Card -->
+                <div class="container card rounded-4 p-4 mb-4 custom-card">
+                    <h3 class="text-white text-center m-0">Welcome to Employee Management System</h3>
+                </div>
+
+                <!-- Cards Container -->
+                <div class="container px-0">
+                    <div class="d-flex flex-wrap gap-3">
+
+                        <!-- Card 1 -->
+                        <div class="card custom-card rounded-4" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Add Employees</h5>
+                                <h6 class="card-subtitle mb-2 text-secondary">Employee Registration</h6>
+                                <p class="card-text">Add a new employee with their personal and job details.</p>
+                                <a href="/add_emp" class="btn btn-primary">➕ Add Employee</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="card custom-card rounded-4" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">View All Employees</h5>
+                                <h6 class="card-subtitle mb-2 text-secondary">Employee Directory</h6>
+                                <p class="card-text">View all registered employees and their details.</p>
+                                <a href="/view_all" class="btn btn-primary">👥View Employees</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="card custom-card rounded-4" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Filter Employee </h5>
+                                <h6 class="card-subtitle mb-2 text-secondary">Search & Filter</h6>
+                                <p class="card-text">Find employees quickly by department, role, or other details.</p>
+                                <a href="/filter_emp" class="btn btn-primary">🔎Filter Employee</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="card custom-card rounded-4" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Remove Employee</h5>
+                                <h6 class="card-subtitle mb-2 text-secondary">Employee Management</h6>
+                                <p class="card-text">Remove an employee from the system when they leave the organization.</p>
+                                <a href="/filter_emp" class="btn btn-danger">🗑️Remove Employee</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+            {% comment %} </div> {% endcomment %}
+
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>

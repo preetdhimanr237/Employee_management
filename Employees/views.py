@@ -1,7 +1,8 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from .models import Employee
 from datetime import datetime
 from django.db.models import Q
+from django.contrib import messages
 
 # Create your views here.
 
@@ -31,7 +32,8 @@ def add_emp(request):
         location = request.POST['location']
         new_emp = Employee(first_name=first_name, last_name=last_name,salary=salary,bonus=bonus,phone=phone , dept=dept,role=role ,location=location, hire_date= datetime.now())
         new_emp.save()
-        return HttpResponse('Employee Added successfully')
+        messages.success(request, 'Employee successfully delete ho gaya hai!')
+        return redirect('add_emp')
 
     elif request.method == 'GET':
             return render(request,'add_emp.html')
@@ -75,7 +77,7 @@ def remove_emp(request,emp_id =0):
         try:
             emp_remove = Employee.objects.get(id = emp_id)
             emp_remove.delete()
-            return HttpResponse("Employee removed successfully")
+            messages.success(request, 'Employee successfully delete ho gaya hai!')
         except:
             return HttpResponse("Please enter a vaild details")
     emps = Employee.objects.all()
